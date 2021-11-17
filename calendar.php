@@ -106,12 +106,17 @@ function build_calendar($month, $year) {
         <div class="row"> 
             <div class="col-md-12"> 
                 <div id="calendar"> 
-                    <?php 
-                    $dateComponents = getdate(); 
-                    $month = $dateComponents['mon']; 
-                    $year = $dateComponents['year']; 
-                    echo build_calendar($month,$year); 
-                    ?> 
+                     <?php 
+                    $dateComponents = getdate();
+                    if(isset($_GET['month']) && isset($_GET['year'])) {
+                        $month = $_GET['month'];
+                        $year = $_GET['year'];
+                    } else {
+                        $month = $dateComponents['mon'];
+                        $year = $dateComponents['year'];
+                    }
+                    echo build_calendar($month, $year);
+                        ?> 
                 </div>
                 <div>
                 <a class="btn btn-primary" href="main.php" role="button">Vissza</a>
